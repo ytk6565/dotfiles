@@ -1,0 +1,4 @@
+[include]
+	path = /Users/Shared/.shared.gitconfig
+[includeIf "gitdir:~/Documents/GitHub/"]
+	path = ~/.github.gitconfig

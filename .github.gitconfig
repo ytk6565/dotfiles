@@ -1,0 +1,10 @@
+[core]
+	sshCommand = "ssh -i ~/.ssh/id_rsa_github -F /dev/null"
+[user]
+  name = name
+  email = email
+	signingkey = signingkey
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = true
