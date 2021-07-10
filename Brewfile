@@ -10,9 +10,12 @@ brew "ffmpeg"
 brew "fish"
 brew "tree"
 brew "fzf"
-# brew "peco"
+brew "graphviz"
+brew "go"
+brew "peco"
+brew "ghq"
+brew "nodenv"
 # brew "jq"
-# brew "nvm"
 
 # --------------------------------------------------
 # mas
