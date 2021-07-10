@@ -8,6 +8,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# nodenv
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval (nodenv init - | source)
+
 # --------------------------------------------------
 # Alias
 # --------------------------------------------------
