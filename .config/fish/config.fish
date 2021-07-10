@@ -40,6 +40,7 @@ alias nodearch="node -p process.arch"
 # FUNCTIONS
 # --------------------------------------------------
 
+source /Users/Shared/.config/fish/functions/ghq_fzf_repo.fish
 source /Users/Shared/.config/fish/functions/switch_arch.fish
 
 # --------------------------------------------------
