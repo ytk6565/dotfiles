@@ -1,10 +1,18 @@
 [core]
-	hooksPath = ~/.config/git/hooks
+	excludesfile = /Users/Shared/.gitignore_global
+	ignorecase = false
+	autocrlf = false
+	quotepath = false
 [color]
 	ui = true
+[commit]
+	template = /Users/Shared/.stCommitMsg
 [push]
 	default = current
 [pull]
  	rebase = true
+	ff = only
 [init]
 	defaultBranch = main
+[ghq]
+	root = ~/Repositories
