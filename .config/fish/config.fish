@@ -25,8 +25,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # Git
-alias grsh='git reset --soft HEAD\^'
+alias grsh="git reset --soft HEAD\^"
 alias gt="git log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by\"%C(cyan ul)%an%Creset\" %x09%C(auto)%s %d'"
+alias gsut="git branch --set-upstream-to=origin/(git branch --show-current) (git branch --show-current)"
 
 # Python Web Server
 alias pyserver="python -m SimpleHTTPServer "

@@ -12,9 +12,11 @@ brew "tree"
 brew "fzf"
 brew "graphviz"
 brew "go"
+brew "act"
 brew "peco"
 brew "ghq"
 brew "nodenv"
+brew "svn"
 # brew "jq"
 
 # --------------------------------------------------
