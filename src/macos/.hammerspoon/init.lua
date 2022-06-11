@@ -38,3 +38,16 @@ end
 
 eikana = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, eikanaEvent)
 eikana:start()
+
+-- kitty
+
+hs.hotkey.bind({"ctrl"}, "t", function()
+    local kitty = hs.application.get("kitty")
+    if kitty == nil then
+        hs.application.launchOrFocus("/Applications/kitty.app")
+    elseif kitty:isFrontmost() then
+        kitty:hide()
+    else
+        hs.application.launchOrFocus("/Applications/kitty.app")
+    end
+end)
