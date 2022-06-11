@@ -4,6 +4,9 @@ export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_STATE_HOME="$HOME"/.local/state
 
+# History
+export HISTFILE="$XDG_DATA_HOME"/zsh/history
+
 # FZF
 export FZF_DEFAULT_OPTS='--cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*" --exit-0'
 
