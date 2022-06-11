@@ -15,3 +15,6 @@ export GPG_TTY="$(tty)"
 
 # LANG
 export LANG="ja_JP.UTF-8"
+
+# TERM
+export TERM="xterm-256color"
