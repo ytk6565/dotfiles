@@ -32,7 +32,7 @@ if [[ $ARGS == **brew** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/Brewfile \
     "$DIR_NAME_TO"/
 
-  echo "brew complete.\n"
+  echo "brew complete."
 fi
 
 # --------------------------------------------------
@@ -44,7 +44,7 @@ if [[ $ARGS == **ssh** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.ssh/config \
     "$DIR_NAME_TO"/.ssh/
 
-  echo "ssh complete.\n"
+  echo "ssh complete."
 fi
 
 # --------------------------------------------------
@@ -56,7 +56,7 @@ if [[ $ARGS == **hammerspoon** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.hammerspoon/init.lua \
     "$DIR_NAME_TO"/.hammerspoon/
 
-  echo "lima complete.\n"
+  echo "hammerspoon complete."
 fi
 
 # --------------------------------------------------
@@ -68,7 +68,19 @@ if [[ $ARGS == **lima** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/docker.yaml \
     "$DIR_NAME_TO"/
 
-  echo "hammerspoon complete.\n"
+  echo "lima complete."
+fi
+
+# --------------------------------------------------
+# KITTY
+# --------------------------------------------------
+
+if [[ $ARGS == **kitty** ]]; then
+  cp \
+    "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/kitty/kitty.conf \
+    "$DIR_NAME_TO"/.config/kitty/
+
+  echo "kitty complete."
 fi
 
 # --------------------------------------------------
@@ -80,7 +92,7 @@ if [[ $ARGS == **gnupg** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.gnupg/gpg-agent.conf \
     "$DIR_NAME_TO"/.gnupg/
 
-  echo "gnupg complete.\n"
+  echo "gnupg complete."
 fi
 
 # --------------------------------------------------
@@ -94,7 +106,7 @@ if [[ $ARGS == **git** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_COMMON"/.config/git/ \
     "$DIR_NAME_TO"/.config/git/
 
-  echo "git complete.\n"
+  echo "git complete."
 fi
 
 # --------------------------------------------------
@@ -114,7 +126,7 @@ if [[ $ARGS == **zsh** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/zsh/ \
     "$DIR_NAME_TO"/.config/zsh/
 
-  echo "zsh complete.\n"
+  echo "zsh complete."
 fi
 
 # --------------------------------------------------
@@ -134,7 +146,7 @@ if [[ $ARGS == **fish** ]]; then
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/fish/ \
     "$DIR_NAME_TO"/.config/fish/
 
-  echo "fish complete.\n"
+  echo "fish complete."
 fi
 
 # --------------------------------------------------
