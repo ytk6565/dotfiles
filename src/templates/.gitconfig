@@ -1,0 +1,10 @@
+[core]
+	sshCommand = "ssh -i ~/.ssh/id_rsa -F /dev/null"
+[user]
+  name = USERNAME
+  email = EMAIL
+	signingkey = ********
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = true
