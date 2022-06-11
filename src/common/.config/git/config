@@ -1,0 +1,6 @@
+[include]
+	path = ~/.config/git/_base.config
+[includeIf "gitdir:~/Repositories/github.com/"]
+	path = ~/.config/git/_github.config
+[includeIf "gitdir:~/Repositories/bitbucket.org/"]
+	path = ~/.config/git/_bitbucket.config
