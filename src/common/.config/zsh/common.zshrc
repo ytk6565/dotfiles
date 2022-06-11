@@ -15,7 +15,7 @@ $ "
 # ALIAS
 # --------------------------------------------------
 
-alias r='source ~/.config/zsh/config.zshrc'
+alias r='source ~/.config/zsh/.zshrc'
 alias q='exit'
 alias ls='exa --classify --icons -h'
 alias la='ls -la'

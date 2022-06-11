@@ -50,6 +50,28 @@ if [[ $ARGS == **ssh** ]]; then
 fi
 
 # --------------------------------------------------
+# LIMA
+# --------------------------------------------------
+
+if [[ $ARGS == **lima** ]]; then
+  cp \
+    "$DIR_NAME_FROM"/docker.yaml \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/
+fi
+
+# --------------------------------------------------
+# HAMMERSPOON
+# --------------------------------------------------
+
+if [[ $ARGS == **hammerspoon** ]]; then
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.hammerspoon/
+
+  cp \
+    "$DIR_NAME_FROM"/.hammerspoon/init.lua \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.hammerspoon/
+fi
+
+# --------------------------------------------------
 # GNUPG
 # --------------------------------------------------
 
@@ -125,6 +147,12 @@ if [[ $ARGS == **fish** ]]; then
   cp \
     "$DIR_NAME_FROM"/.config/fish/config.fish \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/fish/
+
+  if [[ $OS_NAME == "Darwin" ]]; then
+    cp \
+      "$DIR_NAME_FROM"/.config/fish/functions/switch_arch.fish \
+      "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
+  fi
 fi
 
 # --------------------------------------------------

@@ -2,9 +2,6 @@
 # PATH
 # --------------------------------------------------
 
-# Homebrew
-eval ($HOME/.linuxbrew/bin/brew shellenv)
-
 # nodenv
 eval (nodenv init - | source)
 

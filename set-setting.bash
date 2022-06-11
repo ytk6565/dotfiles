@@ -44,6 +44,26 @@ if [[ $ARGS == **ssh** ]]; then
 fi
 
 # --------------------------------------------------
+# HAMMERSPOON
+# --------------------------------------------------
+
+if [[ $ARGS == **hammerspoon** ]]; then
+  cp \
+    "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.hammerspoon/init.lua \
+    "$DIR_NAME_TO"/.hammerspoon/
+fi
+
+# --------------------------------------------------
+# LIMA
+# --------------------------------------------------
+
+if [[ $ARGS == **lima** ]]; then
+  cp \
+    "$DIR_NAME_FROM"/"$DIR_NAME_OS"/docker.yaml \
+    "$DIR_NAME_TO"/
+fi
+
+# --------------------------------------------------
 # GNUPG
 # --------------------------------------------------
 
@@ -76,12 +96,6 @@ if [[ $ARGS == **zsh** ]]; then
   rsync -a \
     "$DIR_NAME_FROM"/"$DIR_NAME_COMMON"/.config/zsh/ \
     "$DIR_NAME_TO"/.config/zsh/
-  cp \
-    "$DIR_NAME_FROM"/"$DIR_NAME_COMMON"/.config/zsh/functions/ghq_fzf_repo.zsh \
-    "$DIR_NAME_TO"/.config/zsh/functions/
-
-  echo "$DIR_NAME_FROM"/"$DIR_NAME_OS"
-  echo "$(pwd)"
 
   # OS
   rsync -a \
@@ -102,8 +116,8 @@ if [[ $ARGS == **fish** ]]; then
     "$DIR_NAME_TO"/.config/fish/
 
   # OS
-  cp \
-    "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/fish/config.fish \
+  rsync -a \
+    "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/fish/ \
     "$DIR_NAME_TO"/.config/fish/
 fi
 
