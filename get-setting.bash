@@ -20,16 +20,21 @@ else
   trap catch "Run on macOS or Linux"
 fi
 
+DIR_NAME_FROM="$HOME"
+DIR_NAME_TO="src"
+
 # --------------------------------------------------
 # HOMEBREW
 # --------------------------------------------------
 
 if [[ $ARGS == **brew** ]]; then
-  mkdir -p src/"$DIR_NAME_OS"/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/
 
   brew bundle dump
 
-  mv Brewfile src/"$DIR_NAME_OS"/
+  mv \
+    Brewfile \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/
 fi
 
 # --------------------------------------------------
@@ -37,11 +42,11 @@ fi
 # --------------------------------------------------
 
 if [[ $ARGS == **ssh** ]]; then
-  mkdir -p src/"$DIR_NAME_OS"/.ssh/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.ssh/
 
   cp \
-    "$HOME"/.ssh/config \
-    src/"$DIR_NAME_OS"/.ssh/
+    "$DIR_NAME_FROM"/.ssh/config \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.ssh/
 fi
 
 # --------------------------------------------------
@@ -49,11 +54,11 @@ fi
 # --------------------------------------------------
 
 if [[ $ARGS == **gnupg** ]]; then
-  mkdir -p src/"$DIR_NAME_OS"/.gnupg/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.gnupg/
 
   cp \
-    "$HOME"/.gnupg/gpg-agent.conf \
-    src/"$DIR_NAME_OS"/.gnupg/
+    "$DIR_NAME_FROM"/.gnupg/gpg-agent.conf \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.gnupg/
 fi
 
 # --------------------------------------------------
@@ -61,13 +66,13 @@ fi
 # --------------------------------------------------
 
 if [[ $ARGS == **git** ]]; then
-  mkdir -p src/"$DIR_NAME_COMMON"/.config/git/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/git/
 
   cp \
-    "$HOME"/.config/git/_base.config \
-    "$HOME"/.config/git/config \
-    "$HOME"/.config/git/ignore \
-    src/"$DIR_NAME_COMMON"/.config/git/
+    "$DIR_NAME_FROM"/.config/git/_base.config \
+    "$DIR_NAME_FROM"/.config/git/config \
+    "$DIR_NAME_FROM"/.config/git/ignore \
+    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/git/
 fi
 
 # --------------------------------------------------
@@ -76,26 +81,26 @@ fi
 
 if [[ $ARGS == **zsh** ]]; then
   # COMMON
-  mkdir -p src/"$DIR_NAME_COMMON"/.config/zsh/functions/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/zsh/functions/
 
   cp \
-    "$HOME"/.config/zsh/.zimrc \
-    "$HOME"/.config/zsh/.zshrc \
-    "$HOME"/.config/zsh/abbreviations \
-    "$HOME"/.config/zsh/common.zshrc \
-    src/"$DIR_NAME_COMMON"/.config/zsh/
+    "$DIR_NAME_FROM"/.config/zsh/.zimrc \
+    "$DIR_NAME_FROM"/.config/zsh/.zshrc \
+    "$DIR_NAME_FROM"/.config/zsh/abbreviations \
+    "$DIR_NAME_FROM"/.config/zsh/common.zshrc \
+    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/zsh/
   cp \
-    "$HOME"/.config/zsh/functions/ghq_fzf_repo.zsh \
-    src/"$DIR_NAME_COMMON"/.config/zsh/functions/
+    "$DIR_NAME_FROM"/.config/zsh/functions/ghq_fzf_repo.zsh \
+    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/zsh/functions/
 
   # OS
-  mkdir -p src/"$DIR_NAME_OS"/.config/zsh/functions/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/zsh/functions/
 
   cp \
-    "$HOME"/.config/zsh/.zprofile \
-    "$HOME"/.config/zsh/.zshenv \
-    "$HOME"/.config/zsh/config.zshrc \
-    src/"$DIR_NAME_OS"/.config/zsh/
+    "$DIR_NAME_FROM"/.config/zsh/.zprofile \
+    "$DIR_NAME_FROM"/.config/zsh/.zshenv \
+    "$DIR_NAME_FROM"/.config/zsh/config.zshrc \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/zsh/
 fi
 
 # --------------------------------------------------
@@ -104,22 +109,22 @@ fi
 
 if [[ $ARGS == **fish** ]]; then
   # COMMON
-  mkdir -p src/"$DIR_NAME_COMMON"/.config/fish/functions/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
 
   cp \
-    "$HOME"/.config/fish/common.fish \
-    "$HOME"/.config/fish/fish_plugins \
-    src/"$DIR_NAME_COMMON"/.config/fish/
+    "$DIR_NAME_FROM"/.config/fish/common.fish \
+    "$DIR_NAME_FROM"/.config/fish/fish_plugins \
+    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/
   cp \
-    "$HOME"/.config/fish/functions/ghq_fzf_repo.fish \
-    src/"$DIR_NAME_COMMON"/.config/fish/functions/
+    "$DIR_NAME_FROM"/.config/fish/functions/ghq_fzf_repo.fish \
+    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
 
   # OS
-  mkdir -p src/"$DIR_NAME_OS"/.config/fish/functions/
+  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/fish/functions/
 
   cp \
-    "$HOME"/.config/fish/config.fish \
-    src/"$DIR_NAME_OS"/.config/fish/
+    "$DIR_NAME_FROM"/.config/fish/config.fish \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/fish/
 fi
 
 # --------------------------------------------------
