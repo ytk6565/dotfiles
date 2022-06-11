@@ -31,6 +31,8 @@ if [[ $ARGS == **brew** ]]; then
   mv \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/Brewfile \
     "$DIR_NAME_TO"/
+
+  echo "brew complete.\n"
 fi
 
 # --------------------------------------------------
@@ -41,6 +43,8 @@ if [[ $ARGS == **ssh** ]]; then
   cp \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.ssh/config \
     "$DIR_NAME_TO"/.ssh/
+
+  echo "ssh complete.\n"
 fi
 
 # --------------------------------------------------
@@ -51,6 +55,8 @@ if [[ $ARGS == **hammerspoon** ]]; then
   cp \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.hammerspoon/init.lua \
     "$DIR_NAME_TO"/.hammerspoon/
+
+  echo "lima complete.\n"
 fi
 
 # --------------------------------------------------
@@ -61,6 +67,8 @@ if [[ $ARGS == **lima** ]]; then
   cp \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/docker.yaml \
     "$DIR_NAME_TO"/
+
+  echo "hammerspoon complete.\n"
 fi
 
 # --------------------------------------------------
@@ -71,6 +79,8 @@ if [[ $ARGS == **gnupg** ]]; then
   cp \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.gnupg/gpg-agent.conf \
     "$DIR_NAME_TO"/.gnupg/
+
+  echo "gnupg complete.\n"
 fi
 
 # --------------------------------------------------
@@ -83,6 +93,8 @@ if [[ $ARGS == **git** ]]; then
   rsync -a \
     "$DIR_NAME_FROM"/"$DIR_NAME_COMMON"/.config/git/ \
     "$DIR_NAME_TO"/.config/git/
+
+  echo "git complete.\n"
 fi
 
 # --------------------------------------------------
@@ -101,6 +113,8 @@ if [[ $ARGS == **zsh** ]]; then
   rsync -a \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/zsh/ \
     "$DIR_NAME_TO"/.config/zsh/
+
+  echo "zsh complete.\n"
 fi
 
 # --------------------------------------------------
@@ -119,6 +133,8 @@ if [[ $ARGS == **fish** ]]; then
   rsync -a \
     "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/fish/ \
     "$DIR_NAME_TO"/.config/fish/
+
+  echo "fish complete.\n"
 fi
 
 # --------------------------------------------------

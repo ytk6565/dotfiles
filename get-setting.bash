@@ -35,6 +35,8 @@ if [[ $ARGS == **brew** ]]; then
   mv \
     Brewfile \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/
+    
+  echo "brew complete.\n"
 fi
 
 # --------------------------------------------------
@@ -47,16 +49,8 @@ if [[ $ARGS == **ssh** ]]; then
   cp \
     "$DIR_NAME_FROM"/.ssh/config \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/.ssh/
-fi
-
-# --------------------------------------------------
-# LIMA
-# --------------------------------------------------
-
-if [[ $ARGS == **lima** ]]; then
-  cp \
-    "$DIR_NAME_FROM"/docker.yaml \
-    "$DIR_NAME_TO"/"$DIR_NAME_OS"/
+    
+  echo "ssh complete.\n"
 fi
 
 # --------------------------------------------------
@@ -69,7 +63,22 @@ if [[ $ARGS == **hammerspoon** ]]; then
   cp \
     "$DIR_NAME_FROM"/.hammerspoon/init.lua \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/.hammerspoon/
+    
+  echo "lima complete.\n"
 fi
+
+# --------------------------------------------------
+# LIMA
+# --------------------------------------------------
+
+if [[ $ARGS == **lima** ]]; then
+  cp \
+    "$DIR_NAME_FROM"/docker.yaml \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/
+    
+  echo "hammerspoon complete.\n"
+fi
+
 
 # --------------------------------------------------
 # GNUPG
@@ -81,6 +90,8 @@ if [[ $ARGS == **gnupg** ]]; then
   cp \
     "$DIR_NAME_FROM"/.gnupg/gpg-agent.conf \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/.gnupg/
+    
+  echo "gnupg complete.\n"
 fi
 
 # --------------------------------------------------
@@ -95,6 +106,8 @@ if [[ $ARGS == **git** ]]; then
     "$DIR_NAME_FROM"/.config/git/config \
     "$DIR_NAME_FROM"/.config/git/ignore \
     "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/git/
+    
+  echo "git complete.\n"
 fi
 
 # --------------------------------------------------
@@ -123,6 +136,8 @@ if [[ $ARGS == **zsh** ]]; then
     "$DIR_NAME_FROM"/.config/zsh/.zshenv \
     "$DIR_NAME_FROM"/.config/zsh/config.zshrc \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/zsh/
+    
+  echo "zsh complete.\n"
 fi
 
 # --------------------------------------------------
@@ -153,6 +168,8 @@ if [[ $ARGS == **fish** ]]; then
       "$DIR_NAME_FROM"/.config/fish/functions/switch_arch.fish \
       "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
   fi
+
+  echo "fish complete.\n"
 fi
 
 # --------------------------------------------------
