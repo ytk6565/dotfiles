@@ -1,4 +1,6 @@
--- global
+----------------------------------------
+-- Global
+----------------------------------------
 
 local function keyStroke(modifiers, key)
     return function()
@@ -6,29 +8,45 @@ local function keyStroke(modifiers, key)
     end
 end
 
--- local function remap(modifiers, key, fn)
---     return hs.hotkey.bind(modifiers, key, fn, nil, fn)
--- end
-
--- eikana
+----------------------------------------
+-- Switch input source
+----------------------------------------
 
 local map = hs.keycodes.map
+local keyDown = hs.eventtap.event.types.keyDown
+local flagsChanged = hs.eventtap.event.types.flagsChanged
+
+local SOURCE_ID_JA = "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese"
+local SOURCE_ID_EN = "com.apple.keylayout.ABC"
+
 local simpleCmd = false
 
-local function eikanaEvent(event)
+local function switchInputSource()
+    hs.eventtap.keyStroke({"ctrl", "alt"}, "space", 0)
+end
+
+local function switchInputSourceEvent(event)
     local c = event:getKeyCode()
     local f = event:getFlags()
-    if event:getType() == hs.eventtap.event.types.keyDown then
-        if f['cmd'] then
+    local isCmd = f['cmd']
+
+    if event:getType() == keyDown then
+        if isCmd then
             simpleCmd = true
         end
-    elseif event:getType() == hs.eventtap.event.types.flagsChanged then
-        if not f['cmd'] then
+    elseif event:getType() == flagsChanged then
+        if not isCmd then
             if simpleCmd == false then
-                if c == map['cmd'] then
-                    keyStroke({}, 0x66)() -- 英数
-                elseif c == map['rightcmd'] then
-                    keyStroke({}, 0x68)() -- かな
+                local currentSourceID = hs.keycodes.currentSourceID()
+
+                if c == map['cmd'] and currentSourceID ~= SOURCE_ID_EN then
+                    -- print("英数")
+                    -- keyStroke({}, 0x66)() -- keyCode: 55
+                    switchInputSource()
+                elseif c == map['rightcmd'] and currentSourceID ~= SOURCE_ID_JA then
+                    -- print("かな")
+                    -- keyStroke({}, 0x68)() -- keyCode: 54
+                    switchInputSource()
                 end
             end
             simpleCmd = false
@@ -36,10 +54,18 @@ local function eikanaEvent(event)
     end
 end
 
-eikana = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, eikanaEvent)
-eikana:start()
+eventTap = hs.eventtap.new(
+    {
+        keyDown,
+        flagsChanged
+    },
+    switchInputSourceEvent
+)
+eventTap:start()
 
+----------------------------------------
 -- kitty
+----------------------------------------
 
 hs.hotkey.bind({"ctrl"}, "t", function()
     local kitty = hs.application.get("kitty")
