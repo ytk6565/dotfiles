@@ -1,79 +1,79 @@
-----------------------------------------
--- Global
-----------------------------------------
-
-local function keyStroke(modifiers, key)
-    return function()
-        hs.eventtap.keyStroke(modifiers, key, 0)
-    end
-end
+local map = hs.keycodes.map
+local keyDown = hs.eventtap.event.types.keyDown
+local flagsChanged = hs.eventtap.event.types.flagsChanged
 
 ----------------------------------------
 -- Switch input source
 ----------------------------------------
 
-local map = hs.keycodes.map
-local keyDown = hs.eventtap.event.types.keyDown
-local flagsChanged = hs.eventtap.event.types.flagsChanged
-
-local SOURCE_ID_JA = "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese"
 local SOURCE_ID_EN = "com.apple.keylayout.ABC"
+local SOURCE_ID_JA = "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese"
+local KEY_CHARACTER_EN = 0x66 -- 英数キー
+local KEY_CHARACTER_JA = 0x68 -- かなキー
+local KEY_CODE_CMD_LEFT = map['cmd'] -- keyCode: 55
+local KEY_CODE_CMD_RIGHT = map['rightcmd'] -- keyCode: 54
 
-local simpleCmd = false
+-- local function keyStroke(modifiers, key)
+--     hs.eventtap.keyStroke(modifiers, key, 0)
+-- end
 
 local function switchInputSource()
     hs.eventtap.keyStroke({"ctrl", "alt"}, "space", 0)
 end
 
-local function switchInputSourceEvent(event)
-    local c = event:getKeyCode()
-    local f = event:getFlags()
-    local isCmd = f['cmd']
+local isCmdAsModifier = false
 
-    if event:getType() == keyDown then
+local function switchInputSourceEvent(event)
+    local eventType = event:getType()
+    local keyCode = event:getKeyCode()
+    local flags = event:getFlags()
+    local isCmd = flags['cmd']
+
+    if eventType == keyDown then
         if isCmd then
-            simpleCmd = true
+            isCmdAsModifier = true
         end
-    elseif event:getType() == flagsChanged then
+    elseif eventType == flagsChanged then
         if not isCmd then
-            if simpleCmd == false then
+            if isCmdAsModifier == false then
                 local currentSourceID = hs.keycodes.currentSourceID()
 
-                if c == map['cmd'] and currentSourceID ~= SOURCE_ID_EN then
+                if keyCode == KEY_CODE_CMD_LEFT and currentSourceID ~= SOURCE_ID_EN then
                     -- print("英数")
-                    -- keyStroke({}, 0x66)() -- keyCode: 55
+                    -- keyStroke({}, KEY_CHARACTER_EN)
                     switchInputSource()
-                elseif c == map['rightcmd'] and currentSourceID ~= SOURCE_ID_JA then
+                elseif keyCode == KEY_CODE_CMD_RIGHT and currentSourceID ~= SOURCE_ID_JA then
                     -- print("かな")
-                    -- keyStroke({}, 0x68)() -- keyCode: 54
+                    -- keyStroke({}, KEY_CHARACTER_JA)
                     switchInputSource()
                 end
             end
-            simpleCmd = false
+            isCmdAsModifier = false
         end
     end
 end
 
-eventTap = hs.eventtap.new(
-    {
-        keyDown,
-        flagsChanged
-    },
-    switchInputSourceEvent
-)
+eventTap = hs.eventtap.new({keyDown, flagsChanged}, switchInputSourceEvent)
 eventTap:start()
 
 ----------------------------------------
 -- kitty
 ----------------------------------------
 
-hs.hotkey.bind({"ctrl"}, "t", function()
+local function launchOrFocusKitty()
+    hs.application.launchOrFocus("/Applications/kitty.app")
+end
+
+local function toggleKitty()
     local kitty = hs.application.get("kitty")
+
     if kitty == nil then
-        hs.application.launchOrFocus("/Applications/kitty.app")
+        launchOrFocusKitty()
     elseif kitty:isFrontmost() then
         kitty:hide()
     else
-        hs.application.launchOrFocus("/Applications/kitty.app")
+        launchOrFocusKitty()
     end
-end)
+end
+
+hs.hotkey.bind({"ctrl"}, "t", toggleKitty)
