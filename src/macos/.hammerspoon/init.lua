@@ -6,21 +6,6 @@ local flagsChanged = hs.eventtap.event.types.flagsChanged
 -- Switch input source
 ----------------------------------------
 
-local SOURCE_ID_EN = "com.apple.keylayout.ABC"
-local SOURCE_ID_JA = "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese"
-local KEY_CHARACTER_EN = 0x66 -- 英数キー
-local KEY_CHARACTER_JA = 0x68 -- かなキー
-local KEY_CODE_CMD_LEFT = map['cmd'] -- keyCode: 55
-local KEY_CODE_CMD_RIGHT = map['rightcmd'] -- keyCode: 54
-
--- local function keyStroke(modifiers, key)
---     hs.eventtap.keyStroke(modifiers, key, 0)
--- end
-
-local function switchInputSource()
-    hs.eventtap.keyStroke({"ctrl", "alt"}, "space", 0)
-end
-
 local isCmdAsModifier = false
 
 local function switchInputSourceEvent(event)
@@ -36,16 +21,10 @@ local function switchInputSourceEvent(event)
     elseif eventType == flagsChanged then
         if not isCmd then
             if isCmdAsModifier == false then
-                local currentSourceID = hs.keycodes.currentSourceID()
-
-                if keyCode == KEY_CODE_CMD_LEFT and currentSourceID ~= SOURCE_ID_EN then
-                    -- print("英数")
-                    -- keyStroke({}, KEY_CHARACTER_EN)
-                    switchInputSource()
-                elseif keyCode == KEY_CODE_CMD_RIGHT and currentSourceID ~= SOURCE_ID_JA then
-                    -- print("かな")
-                    -- keyStroke({}, KEY_CHARACTER_JA)
-                    switchInputSource()
+                if keyCode == map['cmd'] then
+                    hs.keycodes.currentSourceID("com.apple.keylayout.ABC")
+                elseif keyCode == map['rightcmd'] then
+                    hs.keycodes.currentSourceID("com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese")
                 end
             end
             isCmdAsModifier = false
