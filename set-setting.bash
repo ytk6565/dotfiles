@@ -115,6 +115,8 @@ fi
 
 if [[ $ARGS == **zsh** ]]; then
   mkdir -p "$DIR_NAME_TO"/.config/zsh/functions/
+  mkdir -p "$DIR_NAME_TO"/.local/share/zsh/
+  touch -p "$DIR_NAME_TO"/.local/share/zsh/history
 
   # COMMON
   rsync -a \
