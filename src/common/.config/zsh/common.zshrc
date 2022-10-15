@@ -11,6 +11,10 @@ export HISTFILE="$XDG_DATA_HOME"/zsh/history
 # nodenv
 eval "$(nodenv init -)"
 
+# go
+export GOPATH="$(go env GOPATH)"
+export PATH="$GOPATH/bin:$PATH"
+
 # Overwrite eriner theme prompt new line
 _prompt_eriner_end() {
   print -n "%k%F{${BG_COLOR}}%f
