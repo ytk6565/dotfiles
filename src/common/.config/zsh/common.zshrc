@@ -44,3 +44,4 @@ alias gsut='git branch --set-upstream-to=origin/$(git branch --show-current) $(g
 # --------------------------------------------------
 
 source "$HOME"/.config/zsh/functions/ghq_fzf_repo.zsh
+source "$HOME"/.config/zsh/functions/git_branch_delete.zsh

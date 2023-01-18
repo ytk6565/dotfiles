@@ -9,6 +9,8 @@ function ghq_fzf_repo() {
   zle clear-screen
 }
 
-# key bindings
+# zle
 zle -N ghq_fzf_repo
+
+# key bindings
 bindkey '^g' ghq_fzf_repo
