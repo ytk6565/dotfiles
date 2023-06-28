@@ -57,6 +57,7 @@ zmodule zsh-users/zsh-autosuggestions
 # Custom
 zmodule joshskidmore/zsh-fzf-history-search
 zmodule exa
+zmodule prompt-pwd
 zmodule eriner
 zmodule olets/zsh-abbr
 zmodule fzf
