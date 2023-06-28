@@ -2,9 +2,6 @@
 # ALIAS
 # --------------------------------------------------
 
-# Python Web Server
-alias pyserver="python -m SimpleHTTPServer "
-
 # Dock
 alias rd="defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock"
 
