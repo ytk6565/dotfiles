@@ -92,20 +92,6 @@ if [[ $ARGS == **kitty** ]]; then
 fi
 
 # --------------------------------------------------
-# GNUPG
-# --------------------------------------------------
-
-if [[ $ARGS == **gnupg** ]]; then
-  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.gnupg/
-
-  cp \
-    "$DIR_NAME_FROM"/.gnupg/gpg-agent.conf \
-    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.gnupg/
-    
-  echo "gnupg complete."
-fi
-
-# --------------------------------------------------
 # GIT
 # --------------------------------------------------
 

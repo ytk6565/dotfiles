@@ -7,7 +7,6 @@
 - `hammerspoon`
 - `lima`
 - `kitty`
-- `gnupg`
 - `git`
 - `zsh`
 
