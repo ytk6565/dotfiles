@@ -152,38 +152,6 @@ if [[ $ARGS == **zsh** ]]; then
 fi
 
 # --------------------------------------------------
-# FISH
-# --------------------------------------------------
-
-if [[ $ARGS == **fish** ]]; then
-  # COMMON
-  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
-
-  cp \
-    "$DIR_NAME_FROM"/.config/fish/common.fish \
-    "$DIR_NAME_FROM"/.config/fish/fish_plugins \
-    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/
-  cp \
-    "$DIR_NAME_FROM"/.config/fish/functions/ghq_fzf_repo.fish \
-    "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
-
-  # OS
-  mkdir -p "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/fish/functions/
-
-  cp \
-    "$DIR_NAME_FROM"/.config/fish/config.fish \
-    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/fish/
-
-  if [[ $OS_NAME == "Darwin" ]]; then
-    cp \
-      "$DIR_NAME_FROM"/.config/fish/functions/switch_arch.fish \
-      "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/fish/functions/
-  fi
-
-  echo "fish complete."
-fi
-
-# --------------------------------------------------
 
 echo "OK"
 exit 0

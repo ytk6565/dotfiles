@@ -10,7 +10,6 @@
 - `gnupg`
 - `git`
 - `zsh`
-- `fish`
 
 ## Setting
 

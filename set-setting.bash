@@ -132,26 +132,6 @@ if [[ $ARGS == **zsh** ]]; then
 fi
 
 # --------------------------------------------------
-# FISH
-# --------------------------------------------------
-
-if [[ $ARGS == **fish** ]]; then
-  mkdir -p "$DIR_NAME_TO"/.config/fish/functions/
-
-  # COMMON
-  rsync -a \
-    "$DIR_NAME_FROM"/"$DIR_NAME_COMMON"/.config/fish/ \
-    "$DIR_NAME_TO"/.config/fish/
-
-  # OS
-  rsync -a \
-    "$DIR_NAME_FROM"/"$DIR_NAME_OS"/.config/fish/ \
-    "$DIR_NAME_TO"/.config/fish/
-
-  echo "fish complete."
-fi
-
-# --------------------------------------------------
 
 echo "OK"
 exit 0
