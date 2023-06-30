@@ -100,6 +100,8 @@ if [[ $ARGS == **git** ]]; then
 
   cp \
     "$DIR_NAME_FROM"/.config/git/_base.config \
+    "$DIR_NAME_FROM"/.config/git/_github.config \
+    "$DIR_NAME_FROM"/.config/git/_signing_ssh.config \
     "$DIR_NAME_FROM"/.config/git/config \
     "$DIR_NAME_FROM"/.config/git/ignore \
     "$DIR_NAME_TO"/"$DIR_NAME_COMMON"/.config/git/
