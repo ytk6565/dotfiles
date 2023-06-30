@@ -10,10 +10,8 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
   RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
   if [ "$RUNNING_AGENT" = "0" ]; then
     # Launch a new instance of the agent
-    ssh-agent -s &> .ssh/ssh-agent
+    eval `ssh-agent -s` > /dev/null 2>&1
     # Add ssh keys
-    # TODO: Enter your IdentityFile path
-    # ssh-add ~/path/to/id_ed25519_****
+    eval `ssh-add ~/.ssh/id_ed25519_github_ytk6565_signing > /dev/null 2>&1`
   fi
-  eval `cat .ssh/ssh-agent`
 fi

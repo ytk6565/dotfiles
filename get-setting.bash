@@ -133,6 +133,7 @@ if [[ $ARGS == **zsh** ]]; then
   cp \
     "$DIR_NAME_FROM"/.config/zsh/.zprofile \
     "$DIR_NAME_FROM"/.config/zsh/.zshenv \
+    "$DIR_NAME_FROM"/.config/zsh/.zlogout \
     "$DIR_NAME_FROM"/.config/zsh/config.zshrc \
     "$DIR_NAME_TO"/"$DIR_NAME_OS"/.config/zsh/
     
