@@ -39,6 +39,11 @@ alias rm='rm -i'
 alias gt="git log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by\"%C(cyan ul)%an%Creset\" %x09%C(auto)%s %d'"
 alias gsut='git branch --set-upstream-to=origin/$(git branch --show-current) $(git branch --show-current)'
 
+# Make corepack look like its own package manager
+alias pnpm="corepack pnpm"
+alias yarn="corepack yarn"
+alias cleancache:corepack="rm -rf ~/.cache/node/corepack/"
+
 # --------------------------------------------------
 # FUNCTIONS
 # --------------------------------------------------
