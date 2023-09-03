@@ -8,8 +8,8 @@ export HISTFILE="$XDG_DATA_HOME"/zsh/history
 # COMMANDS
 # --------------------------------------------------
 
-# nodenv
-eval "$(nodenv init -)"
+# fnm
+eval "$(fnm env --use-on-cd)"
 
 # go
 export GOPATH="$(go env GOPATH)"

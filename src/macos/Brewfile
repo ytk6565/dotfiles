@@ -10,7 +10,7 @@ brew "git"
 brew "go"
 brew "lima"
 brew "node-build"
-brew "nodenv"
+brew "fnm"
 brew "tree"
 
 cask "1password"
