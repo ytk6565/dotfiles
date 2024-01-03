@@ -3,6 +3,8 @@
 # --------------------------------------------------
 
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
+# TODO: 各 API キーを環境変数に設定する
+export OPENAI_API_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # --------------------------------------------------
 # COMMANDS
