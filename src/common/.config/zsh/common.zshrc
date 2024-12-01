@@ -29,7 +29,7 @@ $ "
 
 alias r='source ~/.config/zsh/.zshrc'
 alias q='exit'
-alias ls='exa --classify --group --time-style="long-iso" --header --icons'
+alias ls='eza --classify --group --time-style="long-iso" --header --icons'
 alias la='ls -la'
 
 # interactive
