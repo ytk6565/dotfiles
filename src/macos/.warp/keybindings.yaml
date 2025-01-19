@@ -1,0 +1,5 @@
+---
+"editor_view:down": ctrl-n
+"editor_view:add_next_occurrence": none
+"input:search_command_history": ctrl-r
+"workspace:show_command_search": ctrl-s
