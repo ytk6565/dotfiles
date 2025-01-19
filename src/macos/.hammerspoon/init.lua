@@ -39,20 +39,20 @@ eventTap:start()
 -- kitty
 ----------------------------------------
 
-local function launchOrFocusKitty()
-    hs.application.launchOrFocus("/Applications/kitty.app")
-end
+-- local function launchOrFocusKitty()
+--     hs.application.launchOrFocus("/Applications/kitty.app")
+-- end
 
-local function toggleKitty()
-    local kitty = hs.application.get("kitty")
+-- local function toggleKitty()
+--     local kitty = hs.application.get("kitty")
 
-    if kitty == nil then
-        launchOrFocusKitty()
-    elseif kitty:isFrontmost() then
-        kitty:hide()
-    else
-        launchOrFocusKitty()
-    end
-end
+--     if kitty == nil then
+--         launchOrFocusKitty()
+--     elseif kitty:isFrontmost() then
+--         kitty:hide()
+--     else
+--         launchOrFocusKitty()
+--     end
+-- end
 
-hs.hotkey.bind({"ctrl"}, "t", toggleKitty)
+-- hs.hotkey.bind({"ctrl"}, "t", toggleKitty)
