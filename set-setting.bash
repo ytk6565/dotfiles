@@ -72,7 +72,7 @@ if [[ $ARGS == **lima** ]]; then
 fi
 
 # --------------------------------------------------
-# KITTY
+# KITTY (Deprecated)
 # --------------------------------------------------
 
 if [[ $ARGS == **kitty** ]]; then
@@ -81,6 +81,18 @@ if [[ $ARGS == **kitty** ]]; then
     "$DIR_NAME_TO"/.config/kitty/
 
   echo "kitty complete."
+fi
+
+# --------------------------------------------------
+# WARP
+# --------------------------------------------------
+
+if [[ $ARGS == **warp** ]]; then
+  cp \
+    "$DIR_NAME_FROM"/.warp/keybindings.yaml \
+    "$DIR_NAME_TO"/"$DIR_NAME_OS"/.warp/
+
+  echo "warp complete."
 fi
 
 # --------------------------------------------------
